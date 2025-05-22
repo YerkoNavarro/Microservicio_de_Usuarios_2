@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.microservicio.usuario.entity.UsuarioEntity;
 import com.microservicio.usuario.model.Usuario;
+import com.microservicio.usuario.model.UsuarioDto;
 import com.microservicio.usuario.repository.UsuarioRepository;
 
 @Service
@@ -14,7 +15,7 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     UsuarioEntity ue = new UsuarioEntity();
-
+    
     public String agregarUsuario(Usuario u){
 
         
@@ -25,7 +26,7 @@ public class UsuarioService {
                 ue.setCorreo(u.getCorreo());
                 ue.setContrasena(u.getContrasena());
                 usuarioRepository.save(ue);
-                return "usuario guuardado correctamente"; 
+                return "usuario guardado correctamente"; 
             } catch (Exception e) {
                 return "error al guardar el usuario"+ e.getMessage();
             }
@@ -37,16 +38,16 @@ public class UsuarioService {
 
 
     }
-    public Usuario traerUsuario(int id){
+    public UsuarioDto traerUsuario(int id){
 
         try {
             UsuarioEntity usuarioDB = usuarioRepository.findByIdUsuario(id);
             if (usuarioDB != null) {
-                Usuario u = new Usuario();
-                u.setIdUsuario(u.getIdUsuario());
+                UsuarioDto u = new UsuarioDto();
+                u.setIdUsuario(usuarioDB.getIdUsuario());
                 u.setNombre(usuarioDB.getNombre());
                 u.setCorreo(usuarioDB.getCorreo());
-                u.setContrasena(usuarioDB.getContrasena());
+                
                 return u;
             } 
 

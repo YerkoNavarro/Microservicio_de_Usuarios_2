@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservicio.usuario.model.Usuario;
+import com.microservicio.usuario.model.UsuarioDto;
 import com.microservicio.usuario.service.UsuarioService;
 
 
@@ -26,10 +27,10 @@ public class UsuarioController {
     }
 
     @GetMapping("/{idUsuario}")
-    public ResponseEntity<Usuario> obtenerVenta(@PathVariable int idUsuario){ 
+    public ResponseEntity<UsuarioDto> obtenerUsuario(@PathVariable int idUsuario){ 
         return ResponseEntity.ok(usuarioService.traerUsuario(idUsuario));
     }
 
-
+    
     
 }
