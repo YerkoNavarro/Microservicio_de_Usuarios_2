@@ -18,7 +18,7 @@ public class UsuarioService {
     public String agregarUsuario(Usuario u){
 
         
-        if(usuarioRepository.existsByIdUsuario(u.getIdUsuario())){
+        if(!usuarioRepository.existsByIdUsuario(u.getIdUsuario())){
             try {
                 ue.setIdUsuario(u.getIdUsuario());
                 ue.setNombre(u.getNombre());
