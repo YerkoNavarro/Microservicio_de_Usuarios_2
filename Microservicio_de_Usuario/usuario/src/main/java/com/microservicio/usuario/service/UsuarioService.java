@@ -85,20 +85,23 @@ public class UsuarioService {
         return false;
 
     }
-    @Transactional
-    public Boolean eliminarUsuario(int id){
 
-        try {
-            if(usuarioRepository.existsByIdUsuario(id)){
-                usuarioRepository.deleteByIdUsuario(id);
-                return true;
-            }else{
-                return false;
-            }
-        } catch (Exception e) {
+@Transactional
+public boolean eliminarUsuario(int idU) {
+    try {
+        UsuarioEntity u = usuarioRepository.findByIdUsuario(idU);
+
+        if (u != null) {
+            usuarioRepository.deleteByIdUsuario(idU);
+            return true;
+        } else {
             return false;
         }
-
+    } catch (Exception e) {
+        return false;
     }
+}
+
+
 
 }
