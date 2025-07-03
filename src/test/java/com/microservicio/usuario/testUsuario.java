@@ -73,6 +73,7 @@ public class testUsuario {
     public void testObtenerUsuarioPorId() {
         when(usuarioRepository.findByIdUsuario(usuario.getIdUsuario())).thenReturn(usuarioEntity);
 
+        
         UsuarioDto result = usuarioService.traerUsuario(usuario.getIdUsuario());
         assertEquals(usuarioDto,result);
     }
